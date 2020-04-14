@@ -11,4 +11,20 @@ class OrdersController < ApplicationController
             OrderItem.create("item_id"=>item["id"] , "order"=>order)
         end
     end
+
+    def index
+        orders = Order.all
+        render json: orders.to_json(
+            :include => {:items => {:except => [:created_at, :updated_at]}
+        })
+    end
+
+    def show
+        order  = Order.find(params[:id])
+        render json: order.to_json(
+            :include => {:items => {:except => [:created_at, :updated_at]},
+
+        })
+    end
+
 end
