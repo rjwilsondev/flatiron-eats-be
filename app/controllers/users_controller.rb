@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     def serailized_data
         {
             :include => {:orders => 
-                {:except => [:created_at, :updated_at ], :methods  =>  :restaurant_name, :include => {:items => {:except => [:created_at, :updated_at]}}}
+                {:except => [:created_at, :updated_at ], :methods  => [:restaurant_name, :total_cost], :include => {:items => {:except => [:created_at, :updated_at]}}}
             },
             :except => [:created_at, :updated_at ]
         }
