@@ -9,11 +9,6 @@ class UsersController < ApplicationController
 
     def show
         user = User.find(params[:id])
-
-        order_items = user.orders.map do |order| 
-            {restaurant: order.restaurant.name, items: order.items}
-        end
-
         render json: user.to_json(
             serailized_data
         )
