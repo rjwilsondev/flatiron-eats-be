@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2020_04_13_171258) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.integer "restaurant_id"
+    t.bigint "restaurant_id"
     t.text "description"
     t.float "price"
     t.string "img_url"
@@ -24,8 +27,8 @@ ActiveRecord::Schema.define(version: 2020_04_13_171258) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "item_id"
+    t.bigint "order_id"
+    t.bigint "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_order_items_on_item_id"
@@ -33,8 +36,8 @@ ActiveRecord::Schema.define(version: 2020_04_13_171258) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "restaurant_id"
+    t.bigint "user_id"
+    t.bigint "restaurant_id"
     t.datetime "time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
