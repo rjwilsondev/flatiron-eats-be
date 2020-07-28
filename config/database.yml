@@ -13,7 +13,7 @@
 #
 # Configure Using Gemfile
 # gem 'pg'
-#heroku run rake db:migrate
+#heroku run rake db:migrateheroku
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: flatiron_eats_be
+  database: <%= ENV['DATABASE_URL'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
