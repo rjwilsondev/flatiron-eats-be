@@ -13,7 +13,7 @@
 #
 # Configure Using Gemfile
 # gem 'pg'
-#
+#heroku run rake db:migrate
 default: &default
   adapter: postgresql
   encoding: unicode
